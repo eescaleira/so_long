@@ -6,7 +6,7 @@
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:59:22 by eescalei          #+#    #+#              #
-#    Updated: 2023/11/20 17:48:19 by eescalei         ###   ########.fr        #
+#    Updated: 2023/12/01 17:33:56 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = so_long
 CC = cc
 FLAGS = -Wall -Werror -Wextra
 
-SRC = src/so_long.c
+SRC = src/so_long.c \
+		src/free.c \
+		src/handle_input.c 
 
 OBJ = ${SRC:.c=.o}
 
