@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/01 17:44:06 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/03 19:25:05 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 int main()
 {
-	t_mlx_data	*data;
-	int x = 16, y = 16;
-	data = malloc(sizeof(t_mlx_data));
-	data->mlx = mlx_init();
-	if(!data->mlx)
+	t_mlx_data	data;
+
+	innit_window(&data);
+	if(!data.mlx)
 		return (0);
-	data->mlx_win = mlx_new_window(data->mlx, 500, 500, "first window");
-	mlx_key_hook(data->mlx_win, handle_input, data);
-	mlx_loop(data->mlx);
+	innit_img(&data);
+	data.img.img = mlx_new_image(data.mlx, 500, 500);
+	data.img.img_pixels = mlx_get_data_addr(data.img.img, &data.img.bits_per_pixel, &data.img.line_length, &data.img.endian);
+	
+	mlx_key_hook(data.mlx_win, handle_input, &data);
+	
+	mlx_loop(data.mlx);
 	return (0);
 }
-
-	// for(x = 0; x < 500; x++)
-	// 	for(y = 0; y < 500; y++)
-	// 		mlx_pixel_put(data->mlx, data->mlx_win, x, y, rand() % 0xFFFFFFFF);

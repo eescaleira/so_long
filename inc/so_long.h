@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/01 17:31:27 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/03 19:27:29 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// typedef struct	s_data {
-// 	void	*img;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }				t_data;
+typedef struct	s_data {
+	void	*img;
+	char	*img_pixels;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 typedef struct	s_mlx_data{
 	void	*mlx;
 	void	*mlx_win;
+	t_data	img;
 }				t_mlx_data;
+
+/* innit */
+void innit_window(t_mlx_data *mlx_data);
+void innit_img(t_mlx_data *data);
 
 /* handle input */
 int handle_input(int keycode, t_mlx_data *data);
+
+/* render optimization */
+void color_screen(t_mlx_data *data, int color);
+void	my_pixel_put_image(t_data *data, int x, int y, int color);
 
 /* frees */
 void destroy_window(t_mlx_data *mlx_data);
 
 #endif
+
+/* mlx_hoop_hook  para  animacoes*/
