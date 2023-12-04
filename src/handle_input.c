@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:30:50 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/03 18:30:36 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:47:03 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int handle_input(int keycode, t_mlx_data *data)
 	{
 		color_screen(data, 0x0000ff);
 	}
+	// mlx_png_file_to_image(data->mlx, data->mlx_win);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.img, 0, 0);
 	return (0);
 }
