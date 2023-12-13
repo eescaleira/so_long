@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/04 16:34:06 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/12 23:37:15 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		width;
+	int		height;
 }				t_data;
 
 typedef struct	s_mlx_data{
@@ -40,6 +42,9 @@ void innit_img(t_mlx_data *data);
 int handle_input(int keycode, t_mlx_data *data);
 
 /* render optimization */
+void put_wall(t_mlx_data *data, int x, int y);
+
+
 void color_screen(t_mlx_data *data, int color);
 void	my_pixel_put_image(t_data *data, int x, int y, int color);
 
