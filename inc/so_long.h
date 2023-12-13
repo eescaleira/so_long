@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/12 23:37:15 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/13 16:20:17 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void color_screen(t_mlx_data *data, int color);
 void	my_pixel_put_image(t_data *data, int x, int y, int color);
 
 /* frees */
-void destroy_window(t_mlx_data *mlx_data);
+int destroy_window(t_mlx_data *mlx_data);
 
 #endif
 
