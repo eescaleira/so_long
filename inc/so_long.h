@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/15 11:42:01 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/15 14:58:40 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ typedef struct	s_mlx_data{
 	void	*mlx;
 	void	*mlx_win;
 	t_data	img;
+	t_image	*imgs;
 }				t_mlx_data;
 
 /* innit */
 void innit_window(t_mlx_data *mlx_data);
 void innit_img(t_mlx_data *data);
+void create_images(t_mlx_data *data);
 
 /* handle input */
 int handle_input(int keycode, t_mlx_data *data);
@@ -64,6 +66,7 @@ void	my_pixel_put_image(t_data *data, int x, int y, int color);
 
 /* frees */
 int destroy_window(t_mlx_data *mlx_data);
+void destroy_images(t_mlx_data *data);
 
 #endif
 
