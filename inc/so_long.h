@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/13 16:20:17 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:42:01 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ typedef struct	s_data {
 	int		height;
 }				t_data;
 
+typedef struct	s_image{
+	t_data	*wall;
+	t_data 	*floor;
+	t_data	*exit;
+	t_data	*blocked_exit;
+	t_data	*collectible;
+	t_data	*player;
+}				t_image;
+
 typedef struct	s_mlx_data{
 	void	*mlx;
 	void	*mlx_win;
@@ -41,8 +50,13 @@ void innit_img(t_mlx_data *data);
 /* handle input */
 int handle_input(int keycode, t_mlx_data *data);
 
-/* render optimization */
-void put_wall(t_mlx_data *data, int x, int y);
+/* render */
+void put_wall(t_mlx_data *data, t_image *imgs,int x, int y);
+void put_floor(t_mlx_data *data, t_image *imgs, int x, int y);
+void put_exit(t_mlx_data *data, t_image *imgs, int x, int y);
+void put_blocked_exit(t_mlx_data *data, t_image *imgs, int x, int y);
+void put_collectible(t_mlx_data *data, t_image *imgs, int x, int y);
+void put_player(t_mlx_data *data, t_image *imgs, int x, int y);
 
 
 void color_screen(t_mlx_data *data, int color);
