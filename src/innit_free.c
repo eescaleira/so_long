@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:51:01 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/16 15:34:07 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:01:53 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ void innit_window(t_mlx_data *data)
 
 void innit_img(void* mlx, t_data *img, char *path)
 {
-	img->img = mlx_new_image(mlx, 500, 500);
-	img->img_pixels = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	img->img = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
+	img->img_pixels = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 }
-
 
 void create_images(t_mlx_data *data)
 {
@@ -38,9 +36,9 @@ void create_images(t_mlx_data *data)
 	data->imgs->blocked_exit = malloc(sizeof(t_data));
 	innit_img(data->mlx, data->imgs->blocked_exit, "./assets/blocked_exit.xpm");
 	data->imgs->collectible = malloc(sizeof(t_data));
-	innit_img(data->mlx, data->imgs->collectible, "./assets/collectible.xpm");
+	// innit_img(data->mlx, data->imgs->collectible, "./assets/collectible.xpm");
 	data->imgs->player = malloc(sizeof(t_data));
-	innit_img(data->mlx, data->imgs->player, "./assets/player.xpm");
+	// innit_img(data->mlx, data->imgs->player, "./assets/player.xpm");
 }
 
 void destroy_images(t_mlx_data *data)
@@ -49,8 +47,15 @@ void destroy_images(t_mlx_data *data)
 	mlx_destroy_image(data->mlx, data->imgs->floor->img);
 	mlx_destroy_image(data->mlx, data->imgs->exit->img);
 	mlx_destroy_image(data->mlx, data->imgs->blocked_exit->img);
-	mlx_destroy_image(data->mlx, data->imgs->collectible->img);
-	mlx_destroy_image(data->mlx, data->imgs->player->img);
+	// mlx_destroy_image(data->mlx, data->imgs->collectible->img);
+	// mlx_destroy_image(data->mlx, data->imgs->player->img);
+	free(data->imgs->wall);
+	free(data->imgs->floor);
+	free(data->imgs->exit);
+	free(data->imgs->blocked_exit);
+	free(data->imgs->collectible);
+	free(data->imgs->player);
+	free(data->imgs);
 }
 
 int destroy_window(t_mlx_data *data)

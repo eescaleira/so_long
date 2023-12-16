@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/16 15:34:28 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:35:35 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@ typedef struct	s_mlx_data{
 	t_data	img;
 	t_image	*imgs;
 }				t_mlx_data;
+
+typedef struct	player{
+	int		x;
+	int		y;
+	int		collectibles;
+}				t_player;
+
+typedef struct	map{
+	int		width;
+	int		height;
+	int 	collectibles;
+	char	**map;
+}				t_map;
+	
 
 /* innit */
 void innit_window(t_mlx_data *mlx_data);
