@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/16 16:35:35 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:52:11 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ void create_images(t_mlx_data *data);
 int handle_input(int keycode, t_mlx_data *data);
 
 /* render */
-void put_wall(t_mlx_data *data, t_image *imgs,int x, int y);
-void put_floor(t_mlx_data *data, t_image *imgs, int x, int y);
-void put_exit(t_mlx_data *data, t_image *imgs, int x, int y);
-void put_blocked_exit(t_mlx_data *data, t_image *imgs, int x, int y);
-void put_collectible(t_mlx_data *data, t_image *imgs, int x, int y);
-void put_player(t_mlx_data *data, t_image *imgs, int x, int y);
+void put_wall(t_mlx_data *data, int x, int y);
+void put_floor(t_mlx_data *data, int x, int y);
+void put_exit(t_mlx_data *data, int x, int y);
+void put_blocked_exit(t_mlx_data *data, int x, int y);
+void put_collectible(t_mlx_data *data, int x, int y);
+void put_player(t_mlx_data *data, int x, int y);
 
 
 void color_screen(t_mlx_data *data, int color);
