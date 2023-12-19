@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:51:01 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/16 16:01:53 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:41:24 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void create_images(t_mlx_data *data)
 	data->imgs->blocked_exit = malloc(sizeof(t_data));
 	innit_img(data->mlx, data->imgs->blocked_exit, "./assets/blocked_exit.xpm");
 	data->imgs->collectible = malloc(sizeof(t_data));
-	// innit_img(data->mlx, data->imgs->collectible, "./assets/collectible.xpm");
+	innit_img(data->mlx, data->imgs->collectible, "./assets/collectible.xpm");
 	data->imgs->player = malloc(sizeof(t_data));
-	// innit_img(data->mlx, data->imgs->player, "./assets/player.xpm");
+	innit_img(data->mlx, data->imgs->player, "./assets/player.xpm");
 }
 
 void destroy_images(t_mlx_data *data)
@@ -47,8 +47,8 @@ void destroy_images(t_mlx_data *data)
 	mlx_destroy_image(data->mlx, data->imgs->floor->img);
 	mlx_destroy_image(data->mlx, data->imgs->exit->img);
 	mlx_destroy_image(data->mlx, data->imgs->blocked_exit->img);
-	// mlx_destroy_image(data->mlx, data->imgs->collectible->img);
-	// mlx_destroy_image(data->mlx, data->imgs->player->img);
+	mlx_destroy_image(data->mlx, data->imgs->collectible->img);
+	mlx_destroy_image(data->mlx, data->imgs->player->img);
 	free(data->imgs->wall);
 	free(data->imgs->floor);
 	free(data->imgs->exit);

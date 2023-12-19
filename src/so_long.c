@@ -6,23 +6,25 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/16 16:14:57 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:24:22 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int main()
+int main(int ac, char **av)
 {
 	t_mlx_data	data;
 
 	innit_window(&data);
-	if(!data.mlx)
+	if(!data.mlx || ac != 2)
 		return (0);
-	create_images(&data);
-		
+	data.map = malloc(sizeof(t_map));
+	copy_map(data.map->map_c, av[1]);
+	create_images(&data); // create images
+
 	mlx_key_hook(data.mlx_win, handle_input, &data);
 	mlx_hook(data.mlx_win, 17, 1L<<0, destroy_window, &data);
-	
+
 	mlx_loop(data.mlx);
 }

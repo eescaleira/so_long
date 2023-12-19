@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/16 16:52:11 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:27:27 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include "../mlx/mlx.h"
 #include "../mlx/mlx_int.h"
+#include "../get_next_line/get_next_line_bonus.h"
+#include "../libft/libft.h"
+#include "../ft_printf/ft_printf.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -37,13 +40,6 @@ typedef struct	s_image{
 	t_data	*player;
 }				t_image;
 
-typedef struct	s_mlx_data{
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-	t_image	*imgs;
-}				t_mlx_data;
-
 typedef struct	player{
 	int		x;
 	int		y;
@@ -54,9 +50,16 @@ typedef struct	map{
 	int		width;
 	int		height;
 	int 	collectibles;
-	char	**map;
+	char	**map_c;
 }				t_map;
 	
+typedef struct	s_mlx_data{
+	void		*mlx;
+	void		*mlx_win;
+	t_image		*imgs;
+	t_map		*map;
+	t_player	*player;
+}				t_mlx_data;
 
 /* innit */
 void innit_window(t_mlx_data *mlx_data);
@@ -65,6 +68,9 @@ void create_images(t_mlx_data *data);
 
 /* handle input */
 int handle_input(int keycode, t_mlx_data *data);
+
+/* map handling */
+void copy_map(char **map, char *map_name);
 
 /* render */
 void put_wall(t_mlx_data *data, int x, int y);
