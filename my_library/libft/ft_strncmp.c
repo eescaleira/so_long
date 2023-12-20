@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/19 23:51:28 by eescalei         ###   ########.fr       */
+/*   Created: 2023/04/18 17:37:43 by eescalei          #+#    #+#             */
+/*   Updated: 2023/05/02 17:53:11 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
-
-int main(int ac, char **av)
+int	ft_strncmp(char *s1, const char *s2, int n)
 {
-	t_mlx_data	data;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	innit_window(&data);
-	if(!data.mlx || ac != 2)
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	if (n < 0)
+		return (-1);
+	while (n > 0 && *str1 == *str2 && *str1 != '\0' && *str2 != '\0')
+	{
+		str1++;
+		str2++;
+		n--;
+	}
+	if (n == 0)
 		return (0);
-	copy_map(data.map->map_c, av[1]);
-	create_images(&data); // create images
-
-	mlx_key_hook(data.mlx_win, handle_input, &data);
-	mlx_hook(data.mlx_win, 17, 1L<<0, destroy_window, &data);
-
-	mlx_loop(data.mlx);
+	return (*str1 - *str2);
 }

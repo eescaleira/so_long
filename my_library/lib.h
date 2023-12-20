@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/19 23:51:28 by eescalei         ###   ########.fr       */
+/*   Created: 2023/12/19 17:26:15 by eescalei          #+#    #+#             */
+/*   Updated: 2023/12/19 17:27:35 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#ifndef LIB_H
+# define LIB_H
 
-int main(int ac, char **av)
-{
-	t_mlx_data	data;
+#include "libft/libft.h"
+#include "ft_printf/ft_printf.h"
+#include "get_next_line/get_next_line_bonus.h"	
 
-	innit_window(&data);
-	if(!data.mlx || ac != 2)
-		return (0);
-	copy_map(data.map->map_c, av[1]);
-	create_images(&data); // create images
-
-	mlx_key_hook(data.mlx_win, handle_input, &data);
-	mlx_hook(data.mlx_win, 17, 1L<<0, destroy_window, &data);
-
-	mlx_loop(data.mlx);
-}
+#endif

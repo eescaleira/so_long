@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/18 19:27:27 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/19 17:52:52 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 #include "../mlx/mlx.h"
 #include "../mlx/mlx_int.h"
-#include "../get_next_line/get_next_line_bonus.h"
-#include "../libft/libft.h"
-#include "../ft_printf/ft_printf.h"
+#include "../my_library/lib.h"
 #include <stdio.h>
 #include <stdlib.h>
 

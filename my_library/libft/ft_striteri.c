@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/19 23:51:28 by eescalei         ###   ########.fr       */
+/*   Created: 2023/04/25 22:12:33 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/26 15:36:04 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	t_mlx_data	data;
+	unsigned int	i;
 
-	innit_window(&data);
-	if(!data.mlx || ac != 2)
-		return (0);
-	copy_map(data.map->map_c, av[1]);
-	create_images(&data); // create images
-
-	mlx_key_hook(data.mlx_win, handle_input, &data);
-	mlx_hook(data.mlx_win, 17, 1L<<0, destroy_window, &data);
-
-	mlx_loop(data.mlx);
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i] != '\0')
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

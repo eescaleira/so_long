@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/19 23:51:28 by eescalei         ###   ########.fr       */
+/*   Created: 2023/04/26 15:44:34 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/28 11:38:22 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_mlx_data	data;
+	unsigned int	i;
+	char			*s2;
 
-	innit_window(&data);
-	if(!data.mlx || ac != 2)
+	i = 0;
+	if (!s || !f)
 		return (0);
-	copy_map(data.map->map_c, av[1]);
-	create_images(&data); // create images
-
-	mlx_key_hook(data.mlx_win, handle_input, &data);
-	mlx_hook(data.mlx_win, 17, 1L<<0, destroy_window, &data);
-
-	mlx_loop(data.mlx);
+	s2 = malloc((ft_strlen(s) +1) * sizeof(char));
+	if (s2 == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		s2[i] = f(i, s[i]);
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
 }

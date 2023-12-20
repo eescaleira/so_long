@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/19 23:51:28 by eescalei         ###   ########.fr       */
+/*   Created: 2023/04/18 17:37:14 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/24 14:50:10 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
-
-int main(int ac, char **av)
+int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {
-	t_mlx_data	data;
+	unsigned int	count;
+	unsigned int	index;
 
-	innit_window(&data);
-	if(!data.mlx || ac != 2)
-		return (0);
-	copy_map(data.map->map_c, av[1]);
-	create_images(&data); // create images
-
-	mlx_key_hook(data.mlx_win, handle_input, &data);
-	mlx_hook(data.mlx_win, 17, 1L<<0, destroy_window, &data);
-
-	mlx_loop(data.mlx);
+	count = 0;
+	index = 0;
+	while (src[count] != '\0')
+		count++;
+	if (size != 0)
+	{
+		while (src[index] != '\0' && index < (size - 1))
+		{
+			dest[index] = src[index];
+			index++;
+		}
+		dest[index] = '\0';
+	}
+	return (count);
 }

@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/19 23:51:28 by eescalei         ###   ########.fr       */
+/*   Created: 2023/04/23 12:49:09 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/24 14:53:55 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	t_mlx_data	data;
+	size_t	i;
+	size_t	j;
 
-	innit_window(&data);
-	if(!data.mlx || ac != 2)
-		return (0);
-	copy_map(data.map->map_c, av[1]);
-	create_images(&data); // create images
-
-	mlx_key_hook(data.mlx_win, handle_input, &data);
-	mlx_hook(data.mlx_win, 17, 1L<<0, destroy_window, &data);
-
-	mlx_loop(data.mlx);
+	j = 0;
+	i = 0;
+	if (little[0] == '\0')
+		return ((char *) big);
+	while (i < len && big[i] != '\0')
+	{
+		while (big[i + j] == little[j] && i + j < len)
+		{
+			if (little[j +1] == '\0')
+				return ((char *) &big[i]);
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (0);
 }

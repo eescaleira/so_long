@@ -5,34 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/20 14:59:22 by eescalei          #+#    #+#              #
-#    Updated: 2023/12/19 23:40:02 by eescalei         ###   ########.fr        #
+#    Created: 2023/12/19 16:58:34 by eescalei          #+#    #+#              #
+#    Updated: 2023/12/19 23:33:05 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-CC = cc
-FLAGS = -Wall -Werror -Wextra
+NAME = lib.a
+HEADER = lib.h	
 
-SRC = src/so_long.c \
-		src/innit_free.c \
-		src/handle_input.c \
-		src/put_blocks.c	\
-		src/check_map.c 
+all: $(NAME)
+#	ar -rcs ${NAME} ./libft/libft.a ./ft_printf/libftprintf.a ./get_next_line/get_next_line.a ${HEADER}
 
-OBJ = ${SRC:.c=.o}
-
-all:	$(NAME)
-
-$(NAME): $(OBJ) 
-	make -C ./my_library/
-	$(CC) $(FLAGS) $(OBJ)  ./my_library/get_next_line/get_next_line.a ./my_library/ft_printf/libftprintf.a ./my_library/libft/libft.a -g -L./mlx -lmlx -lXext -lX11 -lm -lbsd -o $(NAME)		
-
+$(NAME):
+	make bonus -C ./libft/
+	make -C ./ft_printf/
+	make -C ./get_next_line/
 clean:
-	rm -f $(OBJ)
-	make fclean -C ./my_library/
+	make fclean -C ./libft/
+	make fclean -C ./ft_printf/
+	make fclean -C ./get_next_line/
 
 fclean: clean
 	rm -f $(NAME)
-
+	
 re: fclean all

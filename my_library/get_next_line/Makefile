@@ -5,34 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/20 14:59:22 by eescalei          #+#    #+#              #
-#    Updated: 2023/12/19 23:40:02 by eescalei         ###   ########.fr        #
+#    Created: 2023/12/19 17:09:41 by eescalei          #+#    #+#              #
+#    Updated: 2023/12/19 23:39:37 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-CC = cc
-FLAGS = -Wall -Werror -Wextra
+NAME = get_next_line.a
 
-SRC = src/so_long.c \
-		src/innit_free.c \
-		src/handle_input.c \
-		src/put_blocks.c	\
-		src/check_map.c 
+C = cc -Wall -Wextra -Werror
 
-OBJ = ${SRC:.c=.o}
+SRC = get_next_line_bonus.c \
+		get_next_line_utils_bonus.c
 
-all:	$(NAME)
+HEADER = get_next_line_bonus.h
+OBJS = $(SRC:.c=.o)
 
-$(NAME): $(OBJ) 
-	make -C ./my_library/
-	$(CC) $(FLAGS) $(OBJ)  ./my_library/get_next_line/get_next_line.a ./my_library/ft_printf/libftprintf.a ./my_library/libft/libft.a -g -L./mlx -lmlx -lXext -lX11 -lm -lbsd -o $(NAME)		
+all: $(NAME)
 
+$(NAME): $(OBJS)
+	ar -rcs ${NAME} ${OBJS} ${HEADER}
+	
 clean:
-	rm -f $(OBJ)
-	make fclean -C ./my_library/
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
-
-re: fclean all

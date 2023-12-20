@@ -5,34 +5,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/20 14:59:22 by eescalei          #+#    #+#              #
-#    Updated: 2023/12/19 23:40:02 by eescalei         ###   ########.fr        #
+#    Created: 2023/05/03 00:10:20 by eescalei          #+#    #+#              #
+#    Updated: 2023/12/19 23:36:34 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-CC = cc
-FLAGS = -Wall -Werror -Wextra
+NAME = libftprintf.a
 
-SRC = src/so_long.c \
-		src/innit_free.c \
-		src/handle_input.c \
-		src/put_blocks.c	\
-		src/check_map.c 
+SRCS =  ft_printf.c \
+		printstuf.c
 
-OBJ = ${SRC:.c=.o}
+FLAGS = -Wall -Wextra -Werror
 
-all:	$(NAME)
+OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(OBJ) 
-	make -C ./my_library/
-	$(CC) $(FLAGS) $(OBJ)  ./my_library/get_next_line/get_next_line.a ./my_library/ft_printf/libftprintf.a ./my_library/libft/libft.a -g -L./mlx -lmlx -lXext -lX11 -lm -lbsd -o $(NAME)		
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+#	gcc $(FLAGS) $(SRCS) -o $(NAME)
 
-clean:
-	rm -f $(OBJ)
-	make fclean -C ./my_library/
+all : $(NAME)
 
-fclean: clean
-	rm -f $(NAME)
+clean :
+	rm -rf $(OBJS)
 
-re: fclean all
+fclean : clean
+	rm -rf $(NAME)
+
+re : fclean all
+
+.PHONY : all clean fclean re

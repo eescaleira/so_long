@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/19 23:51:28 by eescalei         ###   ########.fr       */
+/*   Created: 2023/04/24 16:43:02 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/28 11:48:23 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	t_mlx_data	data;
+	unsigned int	i;
+	unsigned int	k;
 
-	innit_window(&data);
-	if(!data.mlx || ac != 2)
-		return (0);
-	copy_map(data.map->map_c, av[1]);
-	create_images(&data); // create images
-
-	mlx_key_hook(data.mlx_win, handle_input, &data);
-	mlx_hook(data.mlx_win, 17, 1L<<0, destroy_window, &data);
-
-	mlx_loop(data.mlx);
+	if (ft_strlen(s1) <= 0)
+		return (ft_strdup(""));
+	i = 0;
+	k = ft_strlen(s1) - 1;
+	while (ft_strchr(set, s1[i]) != NULL)
+	{
+		if (i++ > k)
+			return (ft_strdup(""));
+	}
+	while (ft_strchr(set, s1[k]) != NULL)
+	{
+		if (k-- <= i)
+			return (ft_strdup(""));
+	}
+	return (ft_substr(s1, i, k + 1 - i));
 }
