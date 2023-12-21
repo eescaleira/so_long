@@ -6,13 +6,13 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:20:30 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/21 17:13:56 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:21:15 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void copy_map(char ***map, char *map_name)
+/* void copy_map(char ***map, char *map_name)
 {
 	int fd;
 	int i;
@@ -44,4 +44,5 @@ void copy_map(char ***map, char *map_name)
 	// }
 	// **map++;
 	// *map = temp;
-}
+} */
+
