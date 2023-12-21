@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/19 17:52:52 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/20 13:23:06 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void create_images(t_mlx_data *data);
 int handle_input(int keycode, t_mlx_data *data);
 
 /* map handling */
-void copy_map(char **map, char *map_name);
+void copy_map(char ***map, char *map_name);
 
 /* render */
 void put_wall(t_mlx_data *data, int x, int y);
