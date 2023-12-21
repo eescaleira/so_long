@@ -46,3 +46,56 @@
 	// *map = temp;
 } */
 
+void copy_map(char ***map, char *map_name)
+{
+    int fd;
+    char *line;
+    char *path;
+
+    path = ft_strjoin("maps/", map_name);
+    fd = open(ft_strjoin("maps/", map_name), O_RDONLY);
+    if (fd <= 0)
+    {
+        ft_printf("Error opening file\n");
+        exit(0);
+    }
+
+    // Initialize an empty list for the map
+    *map = NULL;
+
+    while ((line = get_next_line(fd)))
+    {
+        int i = 0;
+        char **new_map;
+
+        // Calculate the current size of the map
+        while (*map != NULL && (*map)[i] != NULL)
+            i++;
+
+        // Allocate memory for the new map with one additional element
+        new_map = (char **)malloc(sizeof(char *) * (i + 2));
+
+        if (new_map == NULL)
+        {
+            ft_printf("Memory allocation error\n");
+            exit(0);
+        }
+
+        // Copy existing lines to the new map
+        for (int j = 0; j < i; j++)
+            new_map[j] = (*map)[j];
+
+        // Append the new line
+        new_map[i] = line;
+        new_map[i + 1] = NULL;
+
+        // Free the old map
+        free(*map);
+
+        // Update the map pointer to the new map
+        *map = new_map;
+    }
+
+    close(fd);
+}
+
