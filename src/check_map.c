@@ -6,19 +6,27 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:20:30 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/21 17:56:06 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/21 18:30:29 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void write_map(char ***map, int fd)
+void copy_map(char ***map, char *map_name)
 {
-	char *line;	
-	char **new_map;
 	int i;
+    int fd;
+    char **new_map;
+	char *line;
 
-	while ((line = get_next_line(fd)))
+    fd = open(ft_strjoin("maps/", map_name), O_RDONLY);
+    if (fd <= 0)
+    {
+        ft_printf("Error opening file\n");
+        exit(0);
+    }
+    *map = NULL;
+    while ((line = get_next_line(fd)))
     {
         i = 0;
         while (*map != NULL && (*map)[i] != NULL)
@@ -35,26 +43,8 @@ void write_map(char ***map, int fd)
         new_map[i + 1] = NULL;
         free(*map);
         *map = new_map;
-		free(line);
     }
-}
-
-void copy_map(char ***map, char *map_name)
-{
-    int fd;
-	char *path;
-
-	path = ft_strjoin("maps/", map_name);
-    fd = open(path, O_RDONLY);
-	free(path);
-    if (fd <= 0)
-    {
-        ft_printf("Error opening file\n");
-        exit(0);
-    }
-    *map = NULL;
-	write_map(map, fd);
-	ft_printf("map: %s\n", **map);
+	ft_printf("map: %s\n", (*map)[1]);
     close(fd);
 }
 
