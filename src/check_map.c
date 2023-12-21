@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:20:30 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/21 17:21:15 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:28:47 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@
 
 void copy_map(char ***map, char *map_name)
 {
+	int i;
     int fd;
-    char *line;
-    char *path;
+    char **new_map;
+	char *line;
 
-    path = ft_strjoin("maps/", map_name);
     fd = open(ft_strjoin("maps/", map_name), O_RDONLY);
     if (fd <= 0)
     {
@@ -65,8 +65,7 @@ void copy_map(char ***map, char *map_name)
 
     while ((line = get_next_line(fd)))
     {
-        int i = 0;
-        char **new_map;
+        i = 0;
 
         // Calculate the current size of the map
         while (*map != NULL && (*map)[i] != NULL)
@@ -95,7 +94,7 @@ void copy_map(char ***map, char *map_name)
         // Update the map pointer to the new map
         *map = new_map;
     }
-
+	ft_printf("map: %s\n", **map);
     close(fd);
 }
 
