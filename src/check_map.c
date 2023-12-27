@@ -6,11 +6,76 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:20:30 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/21 18:30:29 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:03:05 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+void create_map(t_mlx_data *data)
+{
+    int i;
+    int j;
+
+    i = 0;
+    data->map->width = 0;
+    data->map->height = 0;
+    while (data->map->map_c[i] != NULL)
+    {
+        j = 0;
+        while (data->map->map_c[i][j] != '\0')
+        {
+            if (data->map->map_c[i][j] == '1')
+                put_wall(data, j, i);
+            if (data->map->map_c[i][j] == '0' || data->map->map_c[i][j] == 'P' 
+            || data->map->map_c[i][j] == 'C' )
+                put_floor(data, j, i);
+            if (data->map->map_c[i][j] == 'P')
+                put_player(data, j, i);
+            if (data->map->map_c[i][j] == 'C')
+                put_collectible(data, j, i);
+            
+            j++;
+        }
+        i++;
+    }
+}
+
+
+void check_map(t_mlx_data *data, char *map_name)
+{
+    int i;
+    int j;
+    int k;
+
+    i = 0;
+    k = 0;
+    while (data->map->map_c[i] != NULL)
+    {
+        j = 0;
+        while (data->map->map_c[i][j] != '\0')
+        {
+            if (data->map->map_c[i][j] == 'P' )
+            {
+                data->player = malloc(sizeof(t_player));
+                data->player->x = j;
+                data->player->y = i;
+                k++;
+            }
+            if (data->map->map_c[i][j] == 'C')
+                data->map->collectibles++;
+            j++;
+        }
+        i++;
+    }
+    data->map->width = j;
+    data->map->height = i;
+    if (k != 1 /* || flood_fill(data->map->map_c, data->player) */)
+    {
+        ft_printf("Error\n");
+        exit(0);
+    }
+}
 
 void copy_map(char ***map, char *map_name)
 {
@@ -44,7 +109,6 @@ void copy_map(char ***map, char *map_name)
         free(*map);
         *map = new_map;
     }
-	ft_printf("map: %s\n", (*map)[1]);
     close(fd);
 }
 

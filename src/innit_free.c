@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:51:01 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/17 16:41:24 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:06:01 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void innit_window(t_mlx_data *data)
 {
 	data->mlx = mlx_init();
-	data->mlx_win = mlx_new_window(data->mlx, 500, 500, "first window");
+	data->mlx_win = mlx_new_window(data->mlx, data->map->width * 16, data->map->height * 16, "first window");
 }
 
 void innit_img(void* mlx, t_data *img, char *path)
