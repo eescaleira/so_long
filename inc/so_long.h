@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/27 15:56:03 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:09:16 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct	map{
 	int		width;
 	int		height;
 	int 	collectibles;
+	int 	exit_x;
+	int 	exit_y;
 	char	**map_c;
 }				t_map;
 	
@@ -71,6 +73,7 @@ int handle_input(int keycode, t_mlx_data *data);
 void create_map(t_mlx_data *data);
 void check_map(t_mlx_data *data, char *map_name);
 void copy_map(char ***map, char *map_name);
+void free_map(char **map);
 
 /* render */
 void put_wall(t_mlx_data *data, int x, int y);

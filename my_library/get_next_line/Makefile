@@ -6,7 +6,7 @@
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 17:09:41 by eescalei          #+#    #+#              #
-#    Updated: 2023/12/19 23:39:37 by eescalei         ###   ########.fr        #
+#    Updated: 2023/12/28 18:27:10 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,3 +30,5 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	
+.SILENT:

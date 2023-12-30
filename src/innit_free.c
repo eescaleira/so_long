@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:51:01 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/27 16:06:01 by eescalei         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:14:13 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void innit_window(t_mlx_data *data)
 {
 	data->mlx = mlx_init();
-	data->mlx_win = mlx_new_window(data->mlx, data->map->width * 16, data->map->height * 16, "first window");
+	data->mlx_win = mlx_new_window(data->mlx, data->map->width * 32, data->map->height * 32, "first window");
 }
 
 void innit_img(void* mlx, t_data *img, char *path)
@@ -34,7 +34,7 @@ void create_images(t_mlx_data *data)
 	data->imgs->exit = malloc(sizeof(t_data));
 	innit_img(data->mlx, data->imgs->exit, "./assets/exit.xpm");
 	data->imgs->blocked_exit = malloc(sizeof(t_data));
-	innit_img(data->mlx, data->imgs->blocked_exit, "./assets/blocked_exit.xpm");
+	innit_img(data->mlx, data->imgs->blocked_exit, "./assets/floor.xpm");
 	data->imgs->collectible = malloc(sizeof(t_data));
 	innit_img(data->mlx, data->imgs->collectible, "./assets/collectible.xpm");
 	data->imgs->player = malloc(sizeof(t_data));
@@ -60,9 +60,19 @@ void destroy_images(t_mlx_data *data)
 
 int destroy_window(t_mlx_data *data)
 {
-	destroy_images(data);
-	mlx_destroy_window(data->mlx, data->mlx_win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	if(data->imgs)
+		destroy_images(data);
+	if(data->map)
+	{	
+		free(data->player);
+		free_map(data->map->map_c);
+		free(data->map);	
+	}
+	if((data->mlx_win != NULL) || (data->mlx != NULL)) 
+	{	
+		mlx_destroy_window(data->mlx, data->mlx_win);
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}	
 	exit (0);
 }

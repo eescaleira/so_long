@@ -6,7 +6,7 @@
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 00:10:20 by eescalei          #+#    #+#              #
-#    Updated: 2023/12/19 23:36:34 by eescalei         ###   ########.fr        #
+#    Updated: 2023/12/28 18:28:17 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,3 +34,4 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re
+.SILENT:

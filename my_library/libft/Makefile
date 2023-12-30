@@ -6,7 +6,7 @@
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/21 16:03:03 by eescalei          #+#    #+#              #
-#    Updated: 2023/12/19 23:28:12 by eescalei         ###   ########.fr        #
+#    Updated: 2023/12/28 18:30:18 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,3 +43,4 @@ bonus:	${OBJS} ${OBJSB}
 		ar rcs ${NAME} ${OBJSB} ${OBJS} ${HEADER}
 
 .PHONY: all clean fclean re bonus
+.SILENT:
