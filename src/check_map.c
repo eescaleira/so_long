@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:20:30 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/31 17:20:40 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/01 22:16:29 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,14 @@ void check_map(t_mlx_data *data, char *map_name)
 {
     int i;
     int j;
+    int line_size;
     char **map;
 
     i = 0;
     data->player = malloc(sizeof(t_player));
     data->player->collectibles = 0;
     data->map->collectibles = 0;
+    line_size = ft_strlen(data->map->map_c[0]);
     while (data->map->map_c[i] != NULL)
     {
         j = 0;
@@ -105,13 +107,15 @@ void check_map(t_mlx_data *data, char *map_name)
                 data->player->x = j;
                 data->player->y = i;
             }
-            if(data->map->map_c[i][j] == 'E')
+            else if(data->map->map_c[i][j] == 'E')
             {
                 data->map->exit_x = j;
                 data->map->exit_y = i;
             }
-            if (data->map->map_c[i][j] == 'C')
+            else if (data->map->map_c[i][j] == 'C')
                 data->map->collectibles++;
+            else if (data->map->map_c[i][j] != '0' && data->map->map_c[i][j] != '1' && data->map->map_c[i][j] != '\n')
+                destroy_window(data);
             j++;
         }
         i++;
@@ -119,24 +123,35 @@ void check_map(t_mlx_data *data, char *map_name)
     data->map->width = j;
     data->map->height = i;
     map = dup_map(data->map->map_c);
-    flood_fill(map, data->player->x, data->player->y, data->player);
-    if(check_walls(data->map) != 0 || !data->player->x || !data->map->exit_x || data->map->collectibles != data->player->collectibles)
+    if(check_walls(data->map) != 0 || !data->player->x || !data->map->exit_x)
         destroy_window(data); 
+    flood_fill(map, data->player->x, data->player->y, data->player);
+    if(data->map->collectibles != data->player->collectibles)
+        destroy_window(data);
     data->player->collectibles = 0;
 }
 int check_walls(t_map *map)
 {
-    int i;
     int j;
 
-    i = 0;
     j = 0;
-        
-    while(map->map_c[j] != NULL)
-    {
-        if(map->map_c[j][0] != '1')
+    while(map->map_c[j++ + 3] != NULL)
+        if(ft_strlen(map->map_c[j]) != ft_strlen(map->map_c[j + 1]))
             return (1);
-        if(map->map_c[j][map->width] != '1')
+    if(ft_strlen(map->map_c[0]) != (ft_strlen(map->map_c[j + 1]) + 1))
+		return (1);
+    while(map->map_c[0][j + 1] != '\0')
+    {
+        if(map->map_c[0][j] != '1')
+            return (1);
+        if(map->map_c[map->height -1][j] != '1')
+            return (1);
+        j++;
+    }
+    j = 0;
+    while(map->map_c[j + 1] != NULL)
+    {
+        if(map->map_c[j][0] != '1' || map->map_c[j][map->width - 1] != '1')
             return (1);
         j++;
     }
