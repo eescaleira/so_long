@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/02 23:22:09 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/02 23:29:51 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 int main(int ac, char **av)
 {
 	t_mlx_data	data;
-
+	if(ac != 2 || check_ber(av[1]))
+		return (0);
 	data.map = malloc(sizeof(t_map));
 	if(copy_map(&data.map->map_c, av[1]) == -1)
 		destroy_window(&data);
@@ -31,6 +32,5 @@ int main(int ac, char **av)
 	create_map(&data);
 	mlx_key_hook(data.mlx_win, handle_input, &data);
 	mlx_hook(data.mlx_win, 17, 1L<<0, destroy_window, &data);
-
 	mlx_loop(data.mlx);
 }

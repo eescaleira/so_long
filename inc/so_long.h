@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/02 23:18:18 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/02 23:28:46 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int flood_fill(char **map, int x, int y, t_player *player);
 int check_walls(t_map *map);
 int check_map_chars(t_mlx_data *data, int i, int j);
 
-
 /* render */
 void put_block(t_mlx_data *data, int j, int i);
 void put_wall(t_mlx_data *data, int x, int y);
@@ -88,10 +87,6 @@ void put_exit(t_mlx_data *data, int x, int y);
 void put_blocked_exit(t_mlx_data *data, int x, int y);
 void put_collectible(t_mlx_data *data, int x, int y);
 void put_player(t_mlx_data *data, int x, int y);
-
-
-void color_screen(t_mlx_data *data, int color);
-void	my_pixel_put_image(t_data *data, int x, int y, int color);
 
 /* frees */
 int destroy_window(t_mlx_data *mlx_data);
