@@ -6,23 +6,27 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/27 16:00:07 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/02 23:22:09 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
+// check if map is ber
+// minimize problem 
+//check map char 
+// loop for em func 
 int main(int ac, char **av)
 {
 	t_mlx_data	data;
 
 	data.map = malloc(sizeof(t_map));
-	copy_map(&data.map->map_c, av[1]);
+	if(copy_map(&data.map->map_c, av[1]) == -1)
+		destroy_window(&data);
 	check_map(&data, av[1]);
-
 	innit_window(&data);
 	if(!data.mlx || ac != 2)
-		return (0);
+		destroy_window(&data);
 	create_images(&data);
 	create_map(&data);
 	mlx_key_hook(data.mlx_win, handle_input, &data);

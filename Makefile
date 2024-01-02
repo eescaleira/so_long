@@ -6,7 +6,7 @@
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:59:22 by eescalei          #+#    #+#              #
-#    Updated: 2023/12/28 18:31:48 by eescalei         ###   ########.fr        #
+#    Updated: 2024/01/02 21:29:47 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,12 @@ CC = cc
 FLAGS = -Wall -Werror -Wextra
 
 SRC = src/so_long.c \
-		src/innit_free.c \
+		src/innit.c \
 		src/handle_input.c \
 		src/put_blocks.c	\
-		src/check_map.c 
+		src/check_map.c \
+		src/util_funcs.c \
+		src/free.c 
 
 OBJ = ${SRC:.c=.o}
 

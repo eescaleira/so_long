@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 23:31:37 by eescalei          #+#    #+#             */
-/*   Updated: 2023/12/30 17:35:46 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/02 22:46:45 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ void put_floor(t_mlx_data *data, int x, int y)
 void put_exit(t_mlx_data *data, int x, int y)
 {
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->imgs->exit->img, x * 32, y * 32);
-}
-
-void put_blocked_exit(t_mlx_data *data, int x, int y)
-{
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->imgs->floor->img, x * 32, y * 32);
 }
 
 void put_collectible(t_mlx_data *data, int x, int y)
