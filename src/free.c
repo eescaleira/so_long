@@ -6,27 +6,27 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 21:28:30 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/02 22:27:05 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/03 22:46:06 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int free_map(char **map)
+int	free_map(char **map)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(map[i] != NULL)
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	i = 0;
+	while (map[i] != NULL)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 	return (0);
 }
 
-void destroy_images(t_mlx_data *data)
+void	destroy_images(t_mlx_data *data)
 {
 	mlx_destroy_image(data->mlx, data->imgs->wall->img);
 	mlx_destroy_image(data->mlx, data->imgs->floor->img);
@@ -43,22 +43,22 @@ void destroy_images(t_mlx_data *data)
 	free(data->imgs);
 }
 
-int destroy_window(t_mlx_data *data)
+int	destroy_window(t_mlx_data *data)
 {
-	if(data->imgs)
+	if (data->imgs)
 		destroy_images(data);
-	if(data->map)
-	{	
+	if (data->map)
+	{
 		free(data->player);
 		free_map(data->map->map_c);
-		free(data->map);	
+		free(data->map);
 	}
-	if(data->mlx_win != NULL)
+	if (data->mlx_win != NULL)
 		mlx_destroy_window(data->mlx, data->mlx_win);
-	if(data->mlx != NULL)
-	{	
+	if (data->mlx != NULL)
+	{
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
-	}	
+	}
 	exit (0);
 }

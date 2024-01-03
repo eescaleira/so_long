@@ -6,7 +6,7 @@
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:59:22 by eescalei          #+#    #+#              #
-#    Updated: 2024/01/02 21:29:47 by eescalei         ###   ########.fr        #
+#    Updated: 2024/01/03 18:44:38 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJ = ${SRC:.c=.o}
 
 all:	$(NAME)
 
-$(NAME): $(OBJ) 
+$(NAME): $(OBJ)
 	make -C ./my_library/
 	$(CC) $(FLAGS) $(OBJ)  ./my_library/get_next_line/get_next_line.a ./my_library/ft_printf/libftprintf.a ./my_library/libft/libft.a -g -L./mlx -lmlx -lXext -lX11 -lm -lbsd -o $(NAME)		
 

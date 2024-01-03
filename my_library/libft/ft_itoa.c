@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:29:18 by eescalei          #+#    #+#             */
-/*   Updated: 2023/05/02 18:36:49 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/03 23:08:36 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_itoa(int n)
 	while (ns >= 10)
 	{
 		s[i--] = (ns % 10) + 48;
-			ns = ns / 10;
+		ns = ns / 10;
 	}
 	s[i] = ns +48;
 	return (s);
