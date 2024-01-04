@@ -6,13 +6,12 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/03 19:06:23 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:59:11 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-// minimize problem 
 //check map char 
 // loop for em func 
 
@@ -44,5 +43,6 @@ int	main(int ac, char **av)
 	create_map(&data);
 	mlx_key_hook(data.mlx_win, handle_input, &data);
 	mlx_hook(data.mlx_win, 17, 1L << 0, destroy_window, &data);
+	mlx_hook(data.mlx_win, 07, 1L << 4, create_map, &data);
 	mlx_loop(data.mlx);
 }

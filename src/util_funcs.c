@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 21:13:17 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/03 23:21:41 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/04 18:15:42 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int	open_map(char *map_name)
 
 int	copy_map(char ***map, char *map_name)
 {
-	int		i;
 	int		fd;
-	char	**new_map;
 	char	*line;
 
 	fd = open_map(map_name);
@@ -43,8 +41,11 @@ int	copy_map(char ***map, char *map_name)
 		new_map = (char **)malloc(sizeof(char *) * (i + 2));
 		if (new_map == NULL)
 			return (-1);
-		for (int j = 0; j < i; j++)			// remove for loop
+		while (j < i)
+		{
 			new_map[j] = (*map)[j];
+			j++;
+		}	
 		new_map[i] = line;
 		new_map[i + 1] = NULL;
 		free(*map);

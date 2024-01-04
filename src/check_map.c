@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:20:30 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/03 22:54:21 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:44:20 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**dup_map(char **map, int i)
 	return (new_map);
 }
 
-void	create_map(t_mlx_data *data)
+int	create_map(t_mlx_data *data)
 {
 	int	i;
 	int	j;
