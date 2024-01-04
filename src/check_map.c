@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:20:30 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/04 17:44:20 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/04 19:44:01 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	create_map(t_mlx_data *data)
 		}
 		i++;
 	}
+	return(0);
 }
 
 void	check_map(t_mlx_data *data, char *map_name)
@@ -68,10 +69,7 @@ void	check_map(t_mlx_data *data, char *map_name)
 	if (check_map_chars(data, i, j) == -1 || data->map->height < 3 
 		|| data->map->width < 3)
 	{
-		free(data->player);
-		free_map(data->map->map_c);
-		free(data->map);
-		exit(0);
+		free_map_play(data);
 	}
 	map = dup_map(data->map->map_c, data->map->height);
 	if (check_walls(data->map) != 0 || !data->player->x || !data->map->exit_x 

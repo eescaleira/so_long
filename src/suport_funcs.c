@@ -6,13 +6,13 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:13:35 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/04 18:16:28 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/04 19:41:35 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	write_map_c()
+void	write_map_c(char ***map, int fd)
 {
 	int		j;
 	int		i;
@@ -36,5 +36,4 @@ void	write_map_c()
 	free(*map);
 	*map = new_map;
 	line = get_next_line(fd);
-
 }
