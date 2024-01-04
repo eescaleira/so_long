@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 21:28:30 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/04 19:38:17 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/04 20:07:34 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ int	destroy_window(t_mlx_data *data)
 	if (data->imgs)
 		destroy_images(data);
 	if (data->map)
-		free_map_play(data);
+	{
+		free(data->player);
+		free_map(data->map->map_c);
+		free(data->map);
+	}	
 	if (data->mlx_win != NULL)
 		mlx_destroy_window(data->mlx, data->mlx_win);
 	if (data->mlx != NULL)
@@ -64,4 +68,5 @@ void free_map_play(t_mlx_data *data)
 	free(data->player);
 	free_map(data->map->map_c);
 	free(data->map);
+	exit (0);
 }

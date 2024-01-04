@@ -6,7 +6,7 @@
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:59:22 by eescalei          #+#    #+#              #
-#    Updated: 2024/01/03 18:44:38 by eescalei         ###   ########.fr        #
+#    Updated: 2024/01/04 19:53:26 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC = src/so_long.c \
 		src/put_blocks.c	\
 		src/check_map.c \
 		src/util_funcs.c \
-		src/free.c 
+		src/free.c \
+		src/suport_funcs.c
 
 OBJ = ${SRC:.c=.o}
 

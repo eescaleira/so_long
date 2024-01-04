@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:20:30 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/04 19:44:01 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/04 20:13:30 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,17 @@ void	check_map(t_mlx_data *data, char *map_name)
 	innit_variables(data);
 	if (check_map_chars(data, i, j) == -1 || data->map->height < 3 
 		|| data->map->width < 3)
-	{
 		free_map_play(data);
-	}
 	map = dup_map(data->map->map_c, data->map->height);
 	if (check_walls(data->map) != 0 || !data->player->x || !data->map->exit_x 
 		|| flood_fill(map, data->player->x, data->player->y, data->player))
-		destroy_window(data); 
-	if (data->map->collectibles != data->player->collectibles || free_map(map))
-		destroy_window(data);
+	{
+		free_map(map);
+		free_map_play(data);
+	}
+	free_map(map);
+	if (data->map->collectibles != data->player->collectibles)
+		free_map_play(data);
 	data->player->collectibles = 0;
 }
 
