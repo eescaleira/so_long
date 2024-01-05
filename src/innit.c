@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:51:01 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/03 23:14:24 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/05 01:13:00 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ void	create_images(t_mlx_data *data)
 {
 	data->imgs = malloc(sizeof(t_image));
 	data->imgs->wall = malloc(sizeof(t_data));
-	innit_img(data->mlx, data->imgs->wall, "./assets/wall.xpm");
+	innit_img(data->mlx, data->imgs->wall, "./textures/wall.xpm");
 	data->imgs->floor = malloc(sizeof(t_data));
-	innit_img(data->mlx, data->imgs->floor, "./assets/floor.xpm");
+	innit_img(data->mlx, data->imgs->floor, "./textures/floor.xpm");
 	data->imgs->exit = malloc(sizeof(t_data));
-	innit_img(data->mlx, data->imgs->exit, "./assets/exit.xpm");
+	innit_img(data->mlx, data->imgs->exit, "./textures/exit.xpm");
 	data->imgs->blocked_exit = malloc(sizeof(t_data));
-	innit_img(data->mlx, data->imgs->blocked_exit, "./assets/floor.xpm");
+	innit_img(data->mlx, data->imgs->blocked_exit, "./textures/floor.xpm");
 	data->imgs->collectible = malloc(sizeof(t_data));
-	innit_img(data->mlx, data->imgs->collectible, "./assets/collectible.xpm");
+	innit_img(data->mlx, data->imgs->collectible, "./textures/collectible.xpm");
 	data->imgs->player = malloc(sizeof(t_data));
-	innit_img(data->mlx, data->imgs->player, "./assets/player.xpm");
+	innit_img(data->mlx, data->imgs->player, "./textures/player.xpm");
 }
 
 void	innit_variables(t_mlx_data *data)

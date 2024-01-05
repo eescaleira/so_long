@@ -6,7 +6,7 @@
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 14:59:22 by eescalei          #+#    #+#              #
-#    Updated: 2024/01/04 19:53:26 by eescalei         ###   ########.fr        #
+#    Updated: 2024/01/05 01:32:34 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ all:	$(NAME)
 
 $(NAME): $(OBJ)
 	make -C ./my_library/
-	$(CC) $(FLAGS) $(OBJ)  ./my_library/get_next_line/get_next_line.a ./my_library/ft_printf/libftprintf.a ./my_library/libft/libft.a -g -L./mlx -lmlx -lXext -lX11 -lm -lbsd -o $(NAME)		
+	$(CC) $(FLAGS) $(OBJ)  ./my_library/get_next_line/get_next_line.a ./my_library/ft_printf/libftprintf.a ./my_library/libft/libft.a -g -L./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd -o $(NAME)		
 
 clean:
 	rm -f $(OBJ)

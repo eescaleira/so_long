@@ -6,15 +6,15 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/04 20:32:12 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/05 01:15:11 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../mlx/mlx.h"
-# include "../mlx/mlx_int.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 # include "../my_library/lib.h"
 # include <stdio.h>
 # include <stdlib.h>
