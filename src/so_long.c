@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/04 17:59:11 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/05 02:24:26 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int	main(int ac, char **av)
 		return (0);
 	data.map = malloc(sizeof(t_map));
 	if (copy_map(&data.map->map_c, av[1]) == -1)
-		destroy_window(&data);
+	{
+		free(data.map);
+		return (0);	
+	}	
 	check_map(&data, av[1]);
 	innit_window(&data);
 	if (!data.mlx)
@@ -43,6 +46,6 @@ int	main(int ac, char **av)
 	create_map(&data);
 	mlx_key_hook(data.mlx_win, handle_input, &data);
 	mlx_hook(data.mlx_win, 17, 1L << 0, destroy_window, &data);
-	mlx_hook(data.mlx_win, 07, 1L << 4, create_map, &data);
+	mlx_hook(data.mlx_win, 9, 1L << 21, create_map, &data);
 	mlx_loop(data.mlx);
 }

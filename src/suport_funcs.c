@@ -6,14 +6,17 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:13:35 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/04 20:32:02 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/05 02:10:35 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	write_map(char ***map, char **new_map, char *line, int j, int i)
+void	write_map(char ***map, char **new_map, char *line, int i)
 {
+	int	j;
+
+	j = 0;
 	while (j < i)
 	{
 		new_map[j] = (*map)[j];

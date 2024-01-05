@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:29:36 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/05 01:15:11 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/05 02:06:43 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ void	innit_variables(t_mlx_data *data);
 int		handle_input(int keycode, t_mlx_data *data);
 
 /* map handling */
-int	create_map(t_mlx_data *data);
+int		create_map(t_mlx_data *data);
 void	check_map(t_mlx_data *data, char *map_name);
 int		copy_map(char ***map, char *map_name);
 int		flood_fill(char **map, int x, int y, t_player *player);
 int		check_walls(t_map *map);
 int		check_map_chars(t_mlx_data *data, int i, int j);
 int		check_char(t_mlx_data *data, int i, int j);
-void	write_map(char ***map, char **new_map, char *line, int j, int i);
+void	write_map(char ***map, char **new_map, char *line, int i);
 
 /* render */
 void	put_block(t_mlx_data *data, int j, int i);
