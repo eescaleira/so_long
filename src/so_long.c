@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:39:42 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/05 02:24:26 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:13:56 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	main(int ac, char **av)
 	if (copy_map(&data.map->map_c, av[1]) == -1)
 	{
 		free(data.map);
-		return (0);	
-	}	
+		return (0);
+	}
 	check_map(&data, av[1]);
 	innit_window(&data);
 	if (!data.mlx)

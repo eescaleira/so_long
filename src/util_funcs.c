@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 21:13:17 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/05 02:07:23 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:15:46 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	copy_map(char ***map, char *map_name)
 	char	**new_map;
 
 	fd = open_map(map_name);
-	if(fd == -1)
+	if (fd == -1)
 		return (-1);
 	*map = NULL;
 	line = get_next_line(fd);
-	if(ft_strlen(line) <= 3)
+	if (ft_strlen(line) <= 3)
 		return (-1);
 	while (line)
 	{

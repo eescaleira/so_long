@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:20:30 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/04 20:13:30 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:16:11 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	create_map(t_mlx_data *data)
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 void	check_map(t_mlx_data *data, char *map_name)

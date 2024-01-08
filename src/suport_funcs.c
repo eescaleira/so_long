@@ -6,7 +6,7 @@
 /*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:13:35 by eescalei          #+#    #+#             */
-/*   Updated: 2024/01/05 02:10:35 by eescalei         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:12:08 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	write_map(char ***map, char **new_map, char *line, int i)
 	{
 		new_map[j] = (*map)[j];
 		j++;
-	}	
+	}
 	new_map[i] = line;
 	new_map[i + 1] = NULL;
 	free(*map);
